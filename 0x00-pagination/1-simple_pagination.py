@@ -61,4 +61,4 @@ class Server:
                 (page[1] > upper_bound):
             return []
 
-        return [csv_list[idx] for idx in range(page[0], page[1] + 1)]
+        return [csv_list[idx] for idx in range(page[0], page[1])]
