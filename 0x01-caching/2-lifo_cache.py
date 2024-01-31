@@ -17,14 +17,12 @@ class LIFOCache(BaseCaching):
                 self.cache_data[key] = item
             else:
                 self.cache_data[key] = item
-                self.MAX_ITEMS += 1
 
             if len(self.cache_data) > BaseCaching.MAX_ITEMS:
                 # delete last item before the new key was set
                 del_key = list(self.cache_data)[-2]
                 self.cache_data.pop(del_key, None)
                 print(f"DISCARD: {del_key}")
-                self.MAX_ITEMS -= 1
 
     def get(self, key):
         """ Get an item by key"""
