@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """main flask app  module - appropriate timezone"""
+from datetime import datetime
 from flask import Flask, request, g
 from flask import render_template
-from flask_babel import Babel, _
+from flask_babel import Babel, _, format_datetime
 import pytz
 from pytz.exceptions import UnknownTimeZoneError
 
@@ -63,7 +64,7 @@ def get_user():
 
 
 @babel.timezoneselector
-def get_timezone:
+def get_timezone():
     """Gets the timezone of the user"""
     try:
         # tz from url param
@@ -97,7 +98,9 @@ def index():
         Returns:
             _summary_
     """
-    return render_template("7-index.html")
+    current_time = datetime.now(pytz.timezone(get_timezone()))
+    formatted_time = format_datetime(current_time)
+    return render_template("8-index.html", time=formatted_time)
 
 
 if __name__ == "__main__":
