@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""main flask app  module"""
+"""main flask app  module - Parameterize templates"""
 from flask import Flask, request
 from flask import render_template
 from flask_babel import Babel, _
