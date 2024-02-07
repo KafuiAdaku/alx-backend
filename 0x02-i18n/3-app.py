@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """main flask app  module"""
-from flask import Flask
+from flask import Flask, request
 from flask import render_template
-from flask_babel import Babel
+from flask_babel import Babel, _
 
 
 class Config:
@@ -20,7 +20,7 @@ babel = Babel(app)
 @app.route("/")
 def index():
     """index page"""
-    return render_template("2-index.html")
+    return render_template("3-index.html")
 
 
 @babel.localeselector
