@@ -17,17 +17,17 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
-@app.route("/")
-def index():
-    """index page"""
-    return render_template("3-index.html")
-
-
 @babel.localeselector
 def get_locale():
     """Gets local language"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
+@app.route("/")
+def index():
+    """index page"""
+    return render_template("3-index.html")
+
+
 if __name__ == "__main__":
-    app.run(port="5000", debug=True)
+    app.run(port="5000", host="0.0.0.0", debug=True)
