@@ -53,19 +53,19 @@ const jobs = [
         phoneNumber: job.phoneNumber,
         message: job.message
     }
-    const newJob = queue.create('push_notification_code2', jobData).save((err) => {
+    const newJob = queue.create('push_notification_code_2', jobData).save((err) => {
         if (!err) {
             console.log(`Notification job created: ${newJob.id}`)
         }
 
     })
     newJob.on('complete', () => {
-        console.log(`Notification job ${newJob.id} completed`);
+        console.log(`Notification job #${newJob.id} completed`);
     })
     newJob.on('failed', () => {
-        console.log(`Notification job {newJob.id} failed`);
+        console.log(`Notification job #${newJob.id} failed`);
     })
     newJob.on('progress', (progress) => {
-        console.log(`Notification job ${newJob.id} ${progress}% complete`);
+        console.log(`Notification job #${newJob.id} ${progress}% complete`);
     });
   }
