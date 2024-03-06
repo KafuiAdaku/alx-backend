@@ -15,17 +15,17 @@ export default function createPushNotificationsJobs(jobs, queue) {
         }
         const newJob = queue.create('push_notification_code_3', jobData).save((err) => {
             if (!err) {
-                const jobId = newJob.id ? newJob.id : 'N/A';
+                const jobId = newJob.id? newJob.id : 'N/A';
                 console.log(`Notification job created: ${jobId}`);
             }
         newJob.on('complete', () => {
             console.log(`Notification job #${jobId} completed`);
         });
         newJob.on('failed', (err) => {
-            console.log(`Notification job #${jobId} failed: ${err}`);
+            console.log(`Notification job #${newJob.id} failed: ${err}`);
         });
         newJob.on('progress', (progress) => {
-            console.log(`Notification job #${jobId} ${progress}% complete`);
+            console.log(`Notification job #${newJob.id} ${progress}% complete`);
         })
         });
     });
